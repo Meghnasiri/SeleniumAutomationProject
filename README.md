@@ -1,10 +1,18 @@
-# Selenium Java Cucumber Test Automation Framework
+# Java Selenium BDD Framework for E-commerce Flows
+## 🚀 Project Overview
+This project is a scalable UI automation framework built using **Selenium WebDriver**, **Java**, **Cucumber BDD**, and **TestNG**.
+It automates real-world e-commerce user journeys such as login, product selection, cart, checkout, and order confirmation.
+And it is a robust, maintainable, and scalable web automation framework.It uses the **Page Object Model (POM)** for clean code organization, supports data-driven testing with JSON, and is ready for CI/CD integration with webhook triggers.
 
-## Overview
-This project is a robust, maintainable, and scalable web automation framework built with **Selenium WebDriver**, **Java**, **Cucumber BDD**, and **TestNG**. It uses the **Page Object Model (POM)** for clean code organization, supports data-driven testing with JSON, and is ready for CI/CD integration with webhook triggers.
+## 🧪 Business Flows Covered
+- User Login
+- Product Selection
+- Add to Cart
+- Checkout Flow
+- Order Confirmation
+- Negative Scenarios
 
 ---
-
 ## Features
 - **Page Object Model (POM)** for maintainable and reusable code
 - **Cucumber BDD** for business-readable, Gherkin-based test scenarios
