@@ -71,7 +71,7 @@ Feature: Purchase the order from Ecommerce Website
 
     Examples:
       | name                   | password      | productName   |
-      | meghnasiri07@gmail.com | Lekshana@#097| ZARA COAT 3   |
+      | ##########@gmail.com   | ############  | ZARA COAT 3   |
 ```
 
 ### Running Cucumber Tests
