@@ -139,6 +139,11 @@ This project is **CI/CD ready** and can be integrated with any modern pipeline t
 
 ---
 
+## 📊 Test Report
+
+![Report](assets/screenshots/report.png)
+
+
 ## Contributors
 - **Meghana** (Lead Tester & Developer)
 
