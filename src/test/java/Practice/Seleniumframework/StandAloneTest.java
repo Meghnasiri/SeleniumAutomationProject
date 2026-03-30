@@ -40,8 +40,9 @@ public class StandAloneTest {
 		WebElement pro = products.stream()
 				.filter(product -> product.findElement(By.cssSelector("b")).getText().equals(productname)).findFirst()
 				.orElse(null);
-
+                
 		pro.findElement(By.cssSelector(".card-body button:last-of-type")).click();
+                //Testing Jenkins is triggered or not on changes
 		/*
 		 * for(int i=0;i<products.size();i++) { String p1=
 		 * products.get(i).findElement(By.xpath(".//b")).getText();
