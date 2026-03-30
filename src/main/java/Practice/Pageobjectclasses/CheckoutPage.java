@@ -10,6 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import Practice.Abstractcomponents.Abstractcomponents;
 
+/**
+ * Page Object Model for the Checkout page.
+ * Handles checkout actions such as selecting country and submitting order.
+ */
 public class CheckoutPage extends Abstractcomponents {
 
 	WebDriver driver;
@@ -31,6 +35,10 @@ public class CheckoutPage extends Abstractcomponents {
 
 	By results = By.cssSelector(".ta-results");
 
+	/**
+	 * Selects a country from the dropdown.
+	 * @param countryName The name of the country to select.
+	 */
 	public void selectCountry(String countryName) {
 
 		Actions a = new Actions(driver);
@@ -40,9 +48,15 @@ public class CheckoutPage extends Abstractcomponents {
 
 	}
 
+	/**
+	 * Submits the order.
+	 * @return A Confirmationpage object for the next page.
+	 */
 	public Confirmationpage submitOrder() {
 		submit.click();
 		Confirmationpage confirmationPage = new Confirmationpage(driver);
 		return confirmationPage;
 	}
 }
+
+// Add JavaDoc for each public method and key inline comments for clarity.

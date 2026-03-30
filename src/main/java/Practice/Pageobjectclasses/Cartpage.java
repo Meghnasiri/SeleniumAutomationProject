@@ -12,6 +12,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import Practice.Abstractcomponents.Abstractcomponents;
 
+/**
+ * Page Object Model for the Cart page.
+ * Handles cart actions such as verifying product display and navigating to checkout.
+ */
+
 //page object doesn't hold any data
 
 public class Cartpage extends Abstractcomponents{
@@ -51,6 +56,9 @@ public class Cartpage extends Abstractcomponents{
 	   return checkoutPage;
    }
    
+   // Add JavaDoc for each public method and key inline comments for clarity.
    }
+
+
 
 

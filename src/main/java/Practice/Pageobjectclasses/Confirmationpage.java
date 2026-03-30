@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 import Practice.Abstractcomponents.Abstractcomponents;
 
+/**
+ * Page Object Model for the Confirmation page.
+ * Handles actions and verifications after order submission.
+ */
 public class Confirmationpage extends Abstractcomponents {
 
 	WebDriver driver;
@@ -22,6 +25,10 @@ public class Confirmationpage extends Abstractcomponents {
 	@FindBy(css=".hero-primary")
 	WebElement message;
 	
+	/**
+	 * Retrieves the confirmation message displayed on the confirmation page.
+	 * @return String confirmation message
+	 */
 	public String confirmationMessage() {
 		
 	String confrimMessage = message.getText();
@@ -29,3 +36,4 @@ public class Confirmationpage extends Abstractcomponents {
 	
 	}
 }
+// Add JavaDoc for each public method and key inline comments for clarity.

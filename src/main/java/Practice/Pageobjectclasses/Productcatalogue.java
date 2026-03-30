@@ -12,6 +12,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import Practice.Abstractcomponents.Abstractcomponents;
 
+/**
+ * Page Object Model for the Product Catalogue page.
+ * Handles product listing, selection, and add-to-cart actions.
+ */
+
 //page object doesn't hold any data
 
 public class Productcatalogue extends Abstractcomponents {
@@ -58,3 +63,4 @@ public class Productcatalogue extends Abstractcomponents {
 		 
 	}
 }
+// Add JavaDoc for each public method and key inline comments for clarity.

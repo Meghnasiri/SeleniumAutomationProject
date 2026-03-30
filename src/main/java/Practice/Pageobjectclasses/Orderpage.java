@@ -1,4 +1,3 @@
-
 package Practice.Pageobjectclasses;
 
 import java.util.List;
@@ -8,11 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 import Practice.Abstractcomponents.Abstractcomponents;
 
-//page object doesn't hold any data
+/**
+ * Page Object Model for the Order page.
+ * Handles order history and order verification actions.
+ */
 
+//page object doesn't hold any data
 public class Orderpage extends Abstractcomponents {
 
 	WebDriver driver;
@@ -37,4 +39,5 @@ public class Orderpage extends Abstractcomponents {
 
 	}
 
+	// Add JavaDoc for each public method and key inline comments for clarity.
 }

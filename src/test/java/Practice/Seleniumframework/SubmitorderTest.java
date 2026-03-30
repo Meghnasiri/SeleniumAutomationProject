@@ -1,21 +1,9 @@
 package Practice.Seleniumframework;
 
-import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,14 +14,48 @@ import Practice.Pageobjectclasses.Confirmationpage;
 import Practice.Pageobjectclasses.Landingpage;
 import Practice.Pageobjectclasses.Orderpage;
 import Practice.Pageobjectclasses.Productcatalogue;
+import Practice.Pageobjectclasses.Registrationpage;
 import Practice.TestComponents.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
+/**
+ * Test class for end-to-end purchase flow including dynamic registration.
+ * Reads registration and purchase data from RegistrationData.json.
+ *
+ * Test Flow:
+ * 1. Register a new user with data from JSON
+ * 2. Login with the registered user
+ * 3. Add product to cart and complete purchase
+ * 4. Optionally, verify order history
+ */
 public class SubmitorderTest extends BaseTest {
+	/**
+	 * Product name used for order history verification.
+	 */
 	String productname = "ZARA COAT 3";
 
+	/**
+	 * Registers a user using the Registrationpage page object.
+	 * 
+	 * @param regData HashMap containing all registration fields (from JSON)
+	 */
+	private void performRegistration(HashMap<String, String> regData) {
+		Registrationpage registrationPage = new Registrationpage(driver);
+		registrationPage.goTo();
+		landingpage = registrationPage.registerApplication(regData);
+	}
+
+	/**
+	 * End-to-end test for registration, login, add to cart, and purchase.
+	 * Data-driven from RegistrationData.json.
+	 * 
+	 * @param input HashMap with registration and purchase fields
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	@Test(dataProvider = "getData", groups = { "purchase" })
 	public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
+		// Register the user first using all registration fields from JSON
+		performRegistration(input);
 
 		String countryName = "India";
 		Productcatalogue productCatalogue = landingpage.loginApplication(input.get("email"), input.get("password"));
@@ -50,37 +72,32 @@ public class SubmitorderTest extends BaseTest {
 
 	}
 
+	/**
+	 * Verifies that the ordered product appears in the user's order history.
+	 * Depends on submitOrder test.
+	 */
 	@Test(dependsOnMethods = { "submitOrder" })
 	public void orderHistorytest() {
 		Productcatalogue productCatalogue = landingpage.loginApplication("meghnasiri07@gmail.com", "Lekshana@#097");
 		Orderpage orderPage = productCatalogue.goToOrderPage();
 		Assert.assertTrue(orderPage.verifyOrderDisplay(productname));
 	}
-	
 
+	/**
+	 * Data provider for registration and purchase tests.
+	 * Reads data from RegistrationData.json.
+	 * 
+	 * @return Object[][] for TestNG data-driven tests
+	 * @throws IOException if file read fails
+	 */
 	@DataProvider
 	public Object[][] getData() throws IOException {
 
 		List<HashMap<String, String>> inputdata = getjsonDataToString(
-				System.getProperty("user.dir") + "//src//test//java//Practice//TestData//PurchaseOrder.json");
+				System.getProperty("user.dir") + "//src//test//java//Practice//TestData//RegistrationData.json");
 
 		return new Object[][] { { inputdata.get(0) }, { inputdata.get(1) } };
 
 	}
 
 }
-
-// @DataProvider
-// public Object[][] getData() {
-// return new Object[][] {{"meghnasiri07@gmail.com","Lekshana@#097","ZARA COAT
-// 3"},{"meghanacharagundla07@gmail.com","Multiply34,"ADIDAS ORIGINAL"}};
-// }
-
-/*
- * HashMap<String,String> map = new HashMap<String,String>(); map.put("email",
- * "meghnasiri07@gmail.com"); map.put("password", "Lekshana@#097");
- * map.put("productname", "ZARA COAT 3"); HashMap<String,String> map1 = new
- * HashMap<String,String>(); map1.put("email","meghanacharagundla07@gmail.com");
- * map1.put("password","Multiply34"); map1.put("productname","ADIDAS ORIGINAL");
- * }
- */
