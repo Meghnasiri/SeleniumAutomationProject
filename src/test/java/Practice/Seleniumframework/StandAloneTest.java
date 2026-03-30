@@ -42,7 +42,8 @@ public class StandAloneTest {
 				.orElse(null);
                 
 		pro.findElement(By.cssSelector(".card-body button:last-of-type")).click();
-                //Testing Jenkins is triggered or not on changes
+                //Testing whether Jenkins is triggered or not on changes
+                //Tracking Changes
 		/*
 		 * for(int i=0;i<products.size();i++) { String p1=
 		 * products.get(i).findElement(By.xpath(".//b")).getText();
