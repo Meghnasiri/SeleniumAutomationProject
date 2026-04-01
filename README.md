@@ -150,7 +150,7 @@ This project is **CI/CD ready** and can be integrated with any modern pipeline t
 ---
 
 ## License
-This project is for educational and demonstration purposes. For commercial use, please add an appropriate license.
+This project is for educational and demonstration purposes.
 
 ---
 
